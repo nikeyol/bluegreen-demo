@@ -1,0 +1,5 @@
+---
+applications:
+- name: demo-bluegreen
+  buildpack: staticfile_buildpack
+  memory: 256M
