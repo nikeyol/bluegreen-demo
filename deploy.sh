@@ -1,7 +1,7 @@
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
-BLUE='\033[0;34m'
-GREEN='\033[0;32m'
+BLUE='\033[34;5m'
+GREEN='\033[32;5m'
 NC='\033[0m' # No Color
 
 app_domain="cfapps.io"
@@ -33,7 +33,7 @@ cd ..
 content=`curl http://${app_name_prefix}-bluegreen-${new_deployment}.${app_domain}/ |grep Version`
 
 if [[ $content == *"Version"* ]]; then
-    echo -e "${YELLOW}Push succeeded, switching deployment to ${new_deployment}"
+    echo -e "${YELLOW}Push succeeded, switching deployment to ${new_color}${new_deployment}${NC}"
     # switch MAIN ROUTE to new deployment and destroy old.
     cf map-route "${app_name_prefix}-bluegreen-${new_deployment}" $app_domain -n $app_host
     cf unmap-route "${app_name_prefix}-bluegreen-${current_deployment}" $app_domain -n $app_host
