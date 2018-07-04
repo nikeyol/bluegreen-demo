@@ -39,5 +39,5 @@ if [[ $content == *"Version"* ]]; then
     cf unmap-route "${app_name_prefix}-bluegreen-${current_deployment}" $app_domain -n $app_host
     cf delete -f "${app_name_prefix}-bluegreen-${current_deployment}"
 else
-    echo -e "${RED}Test failed!"
+    echo -e "${RED}Test failed!${NC}"
 fi
